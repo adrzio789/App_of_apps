@@ -15,6 +15,9 @@ pipeline {
     agent {
         label 'agent'
     }
+    tools {
+        terraform 'Terraform'
+    }
 
     environment {
         PIP_BREAK_SYSTEM_PACKAGES = 1
