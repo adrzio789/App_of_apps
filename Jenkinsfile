@@ -62,6 +62,18 @@ pipeline {
                 sh "python3 -m pytest test/selenium/frontendTest.py"
             }
         }
+        stage('Run terraform') {
+            steps {
+                dir('Terraform') {                
+                    git branch: 'main', url: 'https://github.com/Panda-Academy-Core-2-0/Terraform'
+                    withAWS(credentials:'AWS', region: 'us-east-1') {
+                            sh 'terraform init -backend-config=bucket=adrian-ziolkowski-panda-devops-core-17'
+                            sh 'terraform apply -auto-approve -var bucket_name=adrian-ziolkowski-panda-devops-core-17'
+                            
+                    } 
+                }
+            }
+        }
     }
 
     post {
