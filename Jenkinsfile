@@ -4,7 +4,7 @@ def backendImage="adrzio789/backend"
 def backendDockerTag=""
 def frontendDockerTag=""
 def dockerRegistry=""
-def registryCredentials="Dockerhub"
+def registryCredentials="dockerhub"
 
 pipeline {
     parameters {
